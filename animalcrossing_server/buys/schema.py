@@ -27,9 +27,9 @@ class CreateBuy(graphene.Mutation):
 
     class Arguments:
         islandPassCode = graphene.String()
-	    itemName = graphene.String()
-	    numberOfItem = graphene.Int()
-	    unitPrice = graphene.Int()
+        itemName = graphene.String()
+        numberOfItem = graphene.Int()
+        unitPrice = graphene.Int()
 
     def mutate(self, info, islandPassCode, itemName, numberOfItem, unitPrice):
         user = info.context.user or None
@@ -80,10 +80,10 @@ class ChangeBuy(graphene.Mutation):
     class Arguments:
         id = graphene.Int()
         islandPassCode = graphene.String()
-	    itemName = graphene.String()
-	    numberOfItem = graphene.Int()
-	    unitPrice = graphene.Int()
-	    close = graphene.Boolean()
+        itemName = graphene.String()
+        numberOfItem = graphene.Int()
+        unitPrice = graphene.Int()
+        close = graphene.Boolean()
 
     def mutate(self, info, id, islandPassCode, itemName, numberOfItem, unitPrice, close):
         user = info.context.user or None
@@ -162,7 +162,7 @@ class DeleteBuy(graphene.Mutation):
 
 
 class Mutation(graphene.ObjectType):
-    create_byu = CreateBuy.Field()
+    create_buy = CreateBuy.Field()
     change_buy = ChangeBuy.Field()
     delete_buy = DeleteBuy.Field()
 
@@ -188,6 +188,4 @@ class Query(graphene.ObjectType):
             return Buy.objects.filter(filter)
 
         return Buy.objects.all()
-
-
 

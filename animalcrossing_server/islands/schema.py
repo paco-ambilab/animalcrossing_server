@@ -37,7 +37,7 @@ class CreateIsland(graphene.Mutation):
             raise Exception('You must be logged first!')
 
         accountInfo = AccountInfo.objects.filter(user__id__contains=user.id).first()
-
+        
         if accountInfo is None:
             raise Exception('CreateIsland Fail -> cannot find accountInfo')
 
