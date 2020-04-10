@@ -5,6 +5,8 @@ from graphene_django import DjangoObjectType
 
 from .models import Island
 
+from accountInfos.models import AccountInfo
+
 from accountInfos.schema import AccountInfoType
 
 from django.db.models import Q
@@ -20,7 +22,7 @@ class CreateIsland(graphene.Mutation):
     location = graphene.String()
     hashTagDescription = graphene.String()
     reportCount = graphene.Int()
-    createTime = graphene.Date()
+    createTime = graphene.DateTime()
     close = graphene.Boolean()
 
     class Arguments:
@@ -37,7 +39,7 @@ class CreateIsland(graphene.Mutation):
             raise Exception('You must be logged first!')
 
         accountInfo = AccountInfo.objects.filter(user__id__contains=user.id).first()
-        
+
         if accountInfo is None:
             raise Exception('CreateIsland Fail -> cannot find accountInfo')
 

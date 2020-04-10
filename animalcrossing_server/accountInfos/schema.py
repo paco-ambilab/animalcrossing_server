@@ -18,6 +18,7 @@ class CreateAccount(graphene.Mutation):
         username = graphene.String(required=True)
         password = graphene.String(required=True)
         email = graphene.String(required=True)
+        switchID = graphene.String(required=True)
 
     def mutate(self, info, username, password, email, switchID):
         user = get_user_model()(
