@@ -30,7 +30,7 @@ class CreateAccount(graphene.Mutation):
 
         accountInfo = AccountInfo(
             user = user,
-            createTime = datetime.datetime.now().date(),
+            createTime = datetime.datetime.now(),
             switchID = switchID
         )
         accountInfo.save()

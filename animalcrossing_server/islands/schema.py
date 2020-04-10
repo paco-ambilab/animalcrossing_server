@@ -48,7 +48,7 @@ class CreateIsland(graphene.Mutation):
             islandPassCode = islandPassCode,
             location = location,
             hashTagDescription = hashTagDescription,
-            createTime = datetime.datetime.now().date(),
+            createTime = datetime.datetime.now(),
         )
         island.save()
 
@@ -71,7 +71,7 @@ class ChangeIsland(graphene.Mutation):
     location = graphene.String()
     hashTagDescription = graphene.String()
     reportCount = graphene.Int()
-    createTime = graphene.Date()
+    createTime = graphene.DateTime()
     close = graphene.Boolean()
 
     class Arguments:
@@ -123,7 +123,7 @@ class DeleteIsland(graphene.Mutation):
     location = graphene.String()
     hashTagDescription = graphene.String()
     reportCount = graphene.Int()
-    createTime = graphene.Date()
+    createTime = graphene.DateTime()
     close = graphene.Boolean()
 
     class Arguments:

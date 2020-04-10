@@ -5,6 +5,8 @@ from graphene_django import DjangoObjectType
 
 from .models import Buy
 
+from accountInfos.models import AccountInfo 
+
 from accountInfos.schema import AccountInfoType
 
 from django.db.models import Q
@@ -22,7 +24,7 @@ class CreateBuy(graphene.Mutation):
     numberOfItem = graphene.Int()
     unitPrice = graphene.Int()
     reportCount = graphene.Int()
-    createTime = graphene.Date()
+    createTime = graphene.DateTime()
     close = graphene.Boolean()
 
     class Arguments:
@@ -50,11 +52,11 @@ class CreateBuy(graphene.Mutation):
             itemName = itemName,
             numberOfItem = numberOfItem,
             unitPrice = unitPrice,
-            createTime = datetime.datetime.now().date(),
+            createTime = datetime.datetime.now(),
         )
         buy.save()
 
-        return Createbuy(
+        return CreateBuy(
             id = buy.id,
             accountInfo = buy.accountInfo,
             islandPassCode = buy.islandPassCode,
@@ -74,7 +76,7 @@ class ChangeBuy(graphene.Mutation):
     numberOfItem = graphene.Int()
     unitPrice = graphene.Int()
     reportCount = graphene.Int()
-    createTime = graphene.Date()
+    createTime = graphene.DateTime()
     close = graphene.Boolean()
 
     class Arguments:
@@ -95,7 +97,7 @@ class ChangeBuy(graphene.Mutation):
 
         buy = Buy.objects.get(id = id)
 
-        accountInfo = island.accountInfo
+        accountInfo = buy.accountInfo
         if accountInfo is None:
             raise Exception('CreateIsland Fail -> cannot find accountInfo')
 
@@ -131,7 +133,7 @@ class DeleteBuy(graphene.Mutation):
     numberOfItem = graphene.Int()
     unitPrice = graphene.Int()
     reportCount = graphene.Int()
-    createTime = graphene.Date()
+    createTime = graphene.DateTime()
     close = graphene.Boolean()
 
     class Arguments:
@@ -179,11 +181,11 @@ class Query(graphene.ObjectType):
                 Q(itemName__icontains=search) |
                 Q(close__icontains=close)
             )
-            return Island.objects.filter(filter)
+            return Buy.objects.filter(filter)
 
         if search is None:
             filter = (
-                Q(close__icontains=close)
+                Q(close__contains=close)
             )
             return Buy.objects.filter(filter)
 
