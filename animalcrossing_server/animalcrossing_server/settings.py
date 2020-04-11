@@ -27,6 +27,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# cors issue
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+]
+CORS_ORIGIN_REGEX_WHITELIST = [
+    'http://localhost:3000',
+]
+# cors issue
 
 # Application definition
 
@@ -42,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'graphene_django',
+    'corsheaders', #cors issue, detail: https://www.prisma.io/blog/enabling-cors-for-express-graphql-apollo-server-1ef999bfb38d
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -57,6 +68,7 @@ GRAPHENE = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', #cors issue, detail: https://www.prisma.io/blog/enabling-cors-for-express-graphql-apollo-server-1ef999bfb38d
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

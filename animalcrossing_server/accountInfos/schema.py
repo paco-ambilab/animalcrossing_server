@@ -7,6 +7,10 @@ from graphene_django import DjangoObjectType
 
 from .models import AccountInfo
 
+class UserType(DjangoObjectType):
+    class Meta:
+        model = get_user_model()
+        
 class AccountInfoType(DjangoObjectType):
     class Meta:
         model = AccountInfo
