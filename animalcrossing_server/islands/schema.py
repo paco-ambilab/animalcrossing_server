@@ -167,8 +167,8 @@ class Query(graphene.ObjectType):
 
         if not(search is None):
             filter = (
-                Q(location__icontains=search) |
-                Q(hashTagDescription__icontains=search) |
+                (Q(location__icontains=search) |
+                Q(hashTagDescription__icontains=search)) &
                 Q(close=close)
             )
             return Island.objects.filter(filter)

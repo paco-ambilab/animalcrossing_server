@@ -25,17 +25,19 @@ SECRET_KEY = '!2xp_z#f)h5t0m3&1p8ztbtivg1qh$ds+2p20tp=d%u^eh_gip'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # cors issue
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-]
-CORS_ORIGIN_REGEX_WHITELIST = [
-    'http://localhost:3000',
-]
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:3000',
+#     'http://192.169.0.6:3000',
+# ]
+# CORS_ORIGIN_REGEX_WHITELIST = [
+#     'http://localhost:3000',
+#     'http://192.169.0.6:3000',
+# ]
 # cors issue
 
 # Application definition

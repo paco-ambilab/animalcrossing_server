@@ -178,7 +178,7 @@ class Query(graphene.ObjectType):
 
         if not(search is None):
             filter = (
-                Q(itemName__icontains=search) |
+                Q(itemName__icontains=search) &
                 Q(close=close)
             )
             return Buy.objects.filter(filter)
