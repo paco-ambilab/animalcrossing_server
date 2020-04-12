@@ -10,6 +10,7 @@ from .models import AccountInfo
 class UserType(DjangoObjectType):
     class Meta:
         model = get_user_model()
+        exclude = ['password']
         
 class AccountInfoType(DjangoObjectType):
     class Meta:

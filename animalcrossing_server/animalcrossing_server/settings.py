@@ -43,6 +43,7 @@ CORS_ALLOW_CREDENTIALS = True
 # Application definition
 
 INSTALLED_APPS = [
+    'islandReservations.apps.IslandreservationsConfig',
     'accountInfos.apps.AccountinfosConfig',
     'islands.apps.IslandsConfig',
     'buys.apps.BuysConfig',

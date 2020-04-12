@@ -9,6 +9,7 @@ class Island(models.Model):
     islandPassCode = models.TextField(blank=True, null=True)
     location = models.CharField(max_length=50, null=True)
     hashTagDescription = models.TextField(blank=True, null=True)
+    rule = models.TextField(blank=True, null=True)
     reportCount = models.IntegerField(default=0, null=True)
     createTime = models.DateTimeField(auto_now=True, null=True)
     close = models.BooleanField(default=False, null=True)

@@ -21,6 +21,7 @@ class CreateIsland(graphene.Mutation):
     islandPassCode = graphene.String()
     location = graphene.String()
     hashTagDescription = graphene.String()
+    rule = graphene.String()
     reportCount = graphene.Int()
     createTime = graphene.DateTime()
     close = graphene.Boolean()
@@ -29,8 +30,9 @@ class CreateIsland(graphene.Mutation):
         islandPassCode = graphene.String()
         location = graphene.String()
         hashTagDescription = graphene.String()
+        rule = graphene.String()
 
-    def mutate(self, info, islandPassCode, location, hashTagDescription):
+    def mutate(self, info, islandPassCode, location, hashTagDescription, rule):
         user = info.context.user or None
         if user is None:
             raise Exception('You must be logged first!')
@@ -48,6 +50,7 @@ class CreateIsland(graphene.Mutation):
             islandPassCode = islandPassCode,
             location = location,
             hashTagDescription = hashTagDescription,
+            rule = rule,
             createTime = datetime.datetime.now(),
         )
         island.save()
@@ -58,6 +61,7 @@ class CreateIsland(graphene.Mutation):
             islandPassCode = island.islandPassCode,
             location = island.location,
             hashTagDescription = island.hashTagDescription,
+            rule = rule,
             reportCount = island.reportCount,
             createTime = island.createTime,
             close = island.close,
