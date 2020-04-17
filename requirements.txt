@@ -1,0 +1,7 @@
+django==3.0.3
+django-filter
+django-graphql-jwt
+graphene-django
+django-graphql-jwt
+django-admin
+django-cors-headers
